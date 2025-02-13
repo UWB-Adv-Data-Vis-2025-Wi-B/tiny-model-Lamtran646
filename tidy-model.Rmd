@@ -93,3 +93,18 @@ anova(species_lm, species_x_temp_lm)
 ```
 
 I checked for interactions but decided to stay with the species model.
+
+## Diamond Prices Data
+
+```{r load data, include = FALSE}
+data("diamonds", package = "ggplot2")
+names(diamonds)
+```
+```{r interactions, echo= FALSE}
+ggplot(diamonds, aes(x = carat, y = price, color = color)) +
+  geom_point() + 
+  geom_smooth(method = 'lm') +
+  ggtitle("Plot of carat and price for different diamonds") +
+  ylab('price') +
+  xlab('carat')
+```
