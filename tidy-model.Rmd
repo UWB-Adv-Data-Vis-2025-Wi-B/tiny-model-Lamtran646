@@ -65,4 +65,31 @@ species_lm <- lm(rate ~ temp + species, crickets)
 summary.lm(species_lm)
 ```
 
-The second graph shows a distinction between the species compared to each other based on the same variables of Chirp Rate and Temperature. To be more explicit, we can see the O. exclamationis have a higher rate of chirp against the other variable of temperature than the O. niveus. 
+The second graph shows a distinction between the species compared to each other based on the same variables of Chirp Rate and Temperature. To be more explicit, we can see the O. exclamationis have a higher rate of chirp against the other variable of temperature than the O. niveus.
+
+## Interactions
+
+```{r species historgram, echo = FALSE}
+ggplot(crickets, aes(x = rate, fill = species)) +
+  geom_histogram(position = 'identity', alpha = 0.7, bins = 8) + 
+  ggtitle("Distribution of the chirp rate of crickets") +
+  xlab('Chirp rate (per min.)')
+```
+
+These species occupy different temperature ranges.
+
+```{r interactions, echo= FALSE}
+ggplot(crickets, aes(x = temp, y = rate, color = species)) +
+  geom_point() + 
+  geom_smooth(method = 'lm') +
+  ggtitle("Plot of temperature and chirp rate for two species of crickets") +
+  ylab('Chirp rate (per min.)') +
+  xlab('Temperature (Celsius)')
+  
+species_x_temp_lm <- lm(rate ~ temp + species + temp:species, crickets) 
+summary.lm(species_x_temp_lm)
+
+anova(species_lm, species_x_temp_lm)
+```
+
+I checked for interactions but decided to stay with the species model.
