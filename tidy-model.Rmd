@@ -26,4 +26,4 @@ In this report, we examine what factors a cricket's chirp rate.
 summary(crickets)
 ``` 
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+The number of observations in the data set is 31. The number of species is 2. The temperate range is a minimum of 17.20 and a maximum of 30.40. The mean rate of chirping is 72.89.
